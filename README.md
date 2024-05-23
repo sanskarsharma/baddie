@@ -1,6 +1,7 @@
-# baddie
+# Baddie
 
-This is a demo project to toy around with FMs on amazon bedrock. It uses
+Baddie helps you talk to your documents. Ask questions in natural language and get context aware answers. 
+I've created this as a demo project to toy around with LLMs on amazon bedrock, planning to evolve it to something useful. Under the hood, it uses
 - FM for chat : Meta Llama3-8B on Amazon bedrock (as of now)
 - FM for generating embeddings : Amazon Titan Multimodal Embeddings G1
 - PostgreSQL and PGvector for storing/retrieving embeddings
