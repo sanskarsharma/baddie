@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+
+  postgres:
+    build: ./dev/postgres  # building custom image to add pgvector extension
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data:rw
+      - ./dev/postgres/init.sql:/docker-entrypoint-initdb.d/init_1.sql  # for init script
+    env_file:
+      - dev/configs/postgres.env
+
+  baddie:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - postgres
+    env_file:
+      - dev/configs/postgres.env
+      - dev/configs/aws.env
+
+volumes:
+  postgres-data:
