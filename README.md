@@ -8,7 +8,7 @@ I've created this as a demo project to toy around with LLMs on amazon bedrock, p
 And everything tied together with langchain and streamlit.
 
 
-## Running on local
+## Running on local with python
 Two steps
 1. Create a python3 virtualenv and run.
 
@@ -21,7 +21,12 @@ Two steps
     ```bash
     streamlit run streamlit_app.py --server.port=80 --server.address=0.0.0.0
     ```
-Will dockerize it soon.
+
+## Running on docker-compose
+Add right values for `env_file` in `docker-compose.yaml` and then run below command.
+```bash
+docker-compose up -d
+```
 
 
 # Contributing
