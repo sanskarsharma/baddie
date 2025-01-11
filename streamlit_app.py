@@ -16,7 +16,7 @@ class App:
 
     def __init__(self) -> None:
         self.embedding_model = BedrockEmbeddings(model_id='amazon.titan-embed-image-v1', region_name=os.environ['AWS_REGION'])
-        self.pg_connection_string = f'postgresql://postgres:{os.environ["POSTGRES_USER"]}@{os.environ["POSTGRES_PASSWORD"]}:5432/{os.environ["POSTGRES_DB"]}'
+        self.pg_connection_string = f'postgresql://{os.environ["POSTGRES_USER"]}:{os.environ["POSTGRES_PASSWORD"]}@{os.environ["POSTGRES_HOST"]}:{os.environ["POSTGRES_PORT"]}/{os.environ["POSTGRES_DB"]}'
         self.llm = LLama3_8B()
 
     def run(self, stream_response=False):
