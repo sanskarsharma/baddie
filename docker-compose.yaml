@@ -25,3 +25,12 @@ services:
 
 volumes:
   postgres-data:
+
+# Below is the configuration for using an existing docker network instead of the letting docker-compose create one by default. I use an external network to handle routing and deployment of multiple docker compose stacks on same server using traefik (https://github.com/traefik/traefik).
+# While running this docker-compose, you have 2 options
+#   1. Comment out the below 4 lines, and run this stack as usual, with `docker-compose up`
+#   2. Create a docker network with name `traefik` using command `docker network create traefik`, and move onto better things in your life.
+networks:
+  default:
+    name: traefik
+    external: true
