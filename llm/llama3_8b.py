@@ -64,12 +64,8 @@ class LLama3_8B(BedrockLLM):
         return line        
 
     def get_RAG_response(self, *, vectorstore: VectorStore, user_prompt, stream_response=True):
-        logger.info(" $$$ log 1111")
-        
         docs = vectorstore.similarity_search(query=user_prompt, k=1)
         linked_doc = docs[0].page_content
-        
-        logger.info(" $$$ log 2222")
 
         augmented_prompt = f"""
             Context information is below.\n
