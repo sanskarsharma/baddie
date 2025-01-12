@@ -12,5 +12,5 @@ COPY streamlit_app.py streamlit_app.py
 COPY ./libs libs
 COPY ./llm llm
 
-EXPOSE 80
-ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=80", "--server.fileWatcherType=none"]
+EXPOSE 6969
+ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=6969", "--server.fileWatcherType=none"]

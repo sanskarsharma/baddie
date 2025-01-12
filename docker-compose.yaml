@@ -4,8 +4,8 @@ services:
   postgres:
     build: ./dev/postgres  # building custom image to add pgvector extension
     restart: unless-stopped
-    ports:
-      - "5432:5432"
+    expose:
+      - "5432"  # note : this does not open port on host machine, it just exposes the port in docker compose's network.
     volumes:
       - postgres-data:/var/lib/postgresql/data:rw
       - ./dev/postgres/init.sql:/docker-entrypoint-initdb.d/init_1.sql  # for init script
@@ -15,8 +15,10 @@ services:
   baddie:
     build: .
     restart: unless-stopped
-    ports:
-      - 80:80
+    expose:
+      - "6969"  # note : this does not open port on host machine, it just exposes the port in docker compose's network.
+    # ports:  # Use this if you need to map host's port to container. Eg. when testing on your local machine.
+    #   - "4499:4499"
     depends_on:
       - postgres
     env_file:
